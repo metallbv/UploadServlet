@@ -72,13 +72,14 @@ public class UploadServlet extends HttpServlet {
                 {
                     String fileName = fi.getName();
                     // Write the file
-                    if( fileName.lastIndexOf("\\") >= 0 ){
-                        file = new File( filePath +
-                                fileName.substring( fileName.lastIndexOf("\\"))) ;
-                    }else{
-                        file = new File( filePath +
-                                fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+                    if (fileName.lastIndexOf("\\") >= 0) {
+                        file = new File(filePath +
+                                fileName.substring(fileName.lastIndexOf("\\")));
+                    } else {
+                        file = new File(filePath +
+                                fileName.substring(fileName.lastIndexOf("\\") + 1));
                     }
+
                     fi.write( file );
                     out.println("Uploaded Filename: " + fileName + "<br>");
                     Unzip unzip = new Unzip(file.getPath());
